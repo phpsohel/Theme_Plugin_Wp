@@ -1,0 +1,1414 @@
+/*! Prefix flex for IE10  in LESS
+* https://gist.github.com/codler/2148ba4ff096a19f08ea
+* Copyright (c) 2014 Han Lin Yap http://yap.nu; MIT license */
+/* These are the conditional mixins for the different syntax for IE10 Flexbox */
+.filter-item:before,
+.filter-item:after {
+  display: block;
+  position: absolute;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-transition-timing-function: cubic-bezier(0.58, 0.3, 0.005, 1);
+  -o-transition-timing-function: cubic-bezier(0.58, 0.3, 0.005, 1);
+  transition-timing-function: cubic-bezier(0.58, 0.3, 0.005, 1);
+}
+.filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):before,
+.filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):after {
+  opacity: 0;
+}
+.filter-item:hover:before,
+.filter-item:hover:after,
+.filter-item:focus:before,
+.filter-item:focus:after,
+.filter-item.highlighted:before,
+.filter-item.highlighted:after,
+.act:before,
+.act:after {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+.filter-pointer-double-line .filter-item:before,
+.filter-pointer-double-line .filter-item:after,
+.filter-pointer-underline .filter-item:before,
+.filter-pointer-underline .filter-item:after,
+.filter-pointer-overline .filter-item:before,
+.filter-pointer-overline .filter-item:after {
+  height: 3px;
+  width: 100%;
+  left: 0;
+  background-color: #55595c;
+  z-index: 2;
+}
+.filter-pointer-double-line.filter-animation-grow .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):before,
+.filter-pointer-double-line.filter-animation-grow .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):after,
+.filter-pointer-underline.filter-animation-grow .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):before,
+.filter-pointer-underline.filter-animation-grow .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):after,
+.filter-pointer-overline.filter-animation-grow .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):before,
+.filter-pointer-overline.filter-animation-grow .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):after {
+  height: 0;
+  width: 0;
+  left: 50%;
+}
+.filter-pointer-double-line.filter-animation-drop-out .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):before,
+.filter-pointer-underline.filter-animation-drop-out .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):before,
+.filter-pointer-overline.filter-animation-drop-out .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):before {
+  top: 10px;
+}
+.filter-pointer-double-line.filter-animation-drop-out .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):after,
+.filter-pointer-underline.filter-animation-drop-out .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):after,
+.filter-pointer-overline.filter-animation-drop-out .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):after {
+  bottom: 10px;
+}
+.filter-pointer-double-line.filter-animation-drop-in .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):before,
+.filter-pointer-underline.filter-animation-drop-in .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):before,
+.filter-pointer-overline.filter-animation-drop-in .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):before {
+  top: -10px;
+}
+.filter-pointer-double-line.filter-animation-drop-in .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):after,
+.filter-pointer-underline.filter-animation-drop-in .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):after,
+.filter-pointer-overline.filter-animation-drop-in .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):after {
+  bottom: -10px;
+}
+.filter-pointer-double-line.filter-animation-none,
+.filter-pointer-double-line.filter-animation-none .filter-item,
+.filter-pointer-underline.filter-animation-none,
+.filter-pointer-underline.filter-animation-none .filter-item,
+.filter-pointer-overline.filter-animation-none,
+.filter-pointer-overline.filter-animation-none .filter-item {
+  -webkit-transition-duration: 0s;
+  -o-transition-duration: 0s;
+  transition-duration: 0s;
+}
+.filter-pointer-double-line.filter-animation-none:before,
+.filter-pointer-double-line.filter-animation-none:after,
+.filter-pointer-double-line.filter-animation-none:hover,
+.filter-pointer-double-line.filter-animation-none:focus,
+.filter-pointer-double-line.filter-animation-none .filter-item:before,
+.filter-pointer-double-line.filter-animation-none .filter-item:after,
+.filter-pointer-double-line.filter-animation-none .filter-item:hover,
+.filter-pointer-double-line.filter-animation-none .filter-item:focus,
+.filter-pointer-underline.filter-animation-none:before,
+.filter-pointer-underline.filter-animation-none:after,
+.filter-pointer-underline.filter-animation-none:hover,
+.filter-pointer-underline.filter-animation-none:focus,
+.filter-pointer-underline.filter-animation-none .filter-item:before,
+.filter-pointer-underline.filter-animation-none .filter-item:after,
+.filter-pointer-underline.filter-animation-none .filter-item:hover,
+.filter-pointer-underline.filter-animation-none .filter-item:focus,
+.filter-pointer-overline.filter-animation-none:before,
+.filter-pointer-overline.filter-animation-none:after,
+.filter-pointer-overline.filter-animation-none:hover,
+.filter-pointer-overline.filter-animation-none:focus,
+.filter-pointer-overline.filter-animation-none .filter-item:before,
+.filter-pointer-overline.filter-animation-none .filter-item:after,
+.filter-pointer-overline.filter-animation-none .filter-item:hover,
+.filter-pointer-overline.filter-animation-none .filter-item:focus {
+  -webkit-transition-duration: 0s;
+  -o-transition-duration: 0s;
+  transition-duration: 0s;
+}
+.filter-pointer-double-line .filter-item:before,
+.filter-pointer-overline .filter-item:before {
+  content: '';
+  top: 0;
+}
+.filter-pointer-double-line.filter-animation-slide .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):before,
+.filter-pointer-overline.filter-animation-slide .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):before {
+  width: 10px;
+  left: -20px;
+}
+.filter-pointer-double-line .filter-item:after,
+.filter-pointer-underline .filter-item:after {
+  content: '';
+  bottom: 0;
+}
+.filter-pointer-double-line.filter-animation-slide .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):after,
+.filter-pointer-underline.filter-animation-slide .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):after {
+  width: 10px;
+  left: calc(100% + 20px);
+}
+.filter-pointer-framed .filter-item:before,
+.filter-pointer-framed .filter-item:after {
+  background: transparent;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  border: 3px solid #55595c;
+}
+.filter-pointer-framed .filter-item:before {
+  content: '';
+}
+.filter-pointer-framed.filter-animation-grow .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):before {
+  -webkit-transform: scale(0.75);
+  -ms-transform: scale(0.75);
+  transform: scale(0.75);
+}
+.filter-pointer-framed.filter-animation-shrink .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):before {
+  -webkit-transform: scale(1.25);
+  -ms-transform: scale(1.25);
+  transform: scale(1.25);
+}
+.filter-pointer-framed.filter-animation-grow .filter-item:before,
+.filter-pointer-framed.filter-animation-shrink .filter-item:before {
+  -webkit-transition: opacity 0.2s, -webkit-transform 0.4s;
+  transition: opacity 0.2s, -webkit-transform 0.4s;
+  -o-transition: opacity 0.2s, transform 0.4s;
+  transition: opacity 0.2s, transform 0.4s;
+  transition: opacity 0.2s, transform 0.4s, -webkit-transform 0.4s;
+}
+.filter-pointer-framed.filter-animation-draw .filter-item:before,
+.filter-pointer-framed.filter-animation-draw .filter-item:after {
+  width: 3px;
+  height: 3px;
+}
+.filter-pointer-framed.filter-animation-draw .filter-item:before {
+  border-width: 0 0 3px 3px;
+  -webkit-transition: width 0.1s 0.2s, height 0.1s 0.3s, opacity 0.12s 0.22s;
+  -o-transition: width 0.1s 0.2s, height 0.1s 0.3s, opacity 0.12s 0.22s;
+  transition: width 0.1s 0.2s, height 0.1s 0.3s, opacity 0.12s 0.22s;
+}
+.filter-pointer-framed.filter-animation-draw .filter-item:after {
+  content: '';
+  top: initial;
+  bottom: 0;
+  left: initial;
+  right: 0;
+  border-width: 3px 3px 0 0;
+  -webkit-transition: width 0.1s, height 0.1s 0.1s, opacity 0.02s 0.18s;
+  -o-transition: width 0.1s, height 0.1s 0.1s, opacity 0.02s 0.18s;
+  transition: width 0.1s, height 0.1s 0.1s, opacity 0.02s 0.18s;
+}
+.filter-pointer-framed.filter-animation-draw .filter-item:hover:before,
+.filter-pointer-framed.filter-animation-draw .filter-item:hover:after,
+.filter-pointer-framed.filter-animation-draw .filter-item:focus:before,
+.filter-pointer-framed.filter-animation-draw .filter-item:focus:after,
+.filter-pointer-framed.filter-animation-draw .filter-item.highlighted:before,
+.filter-pointer-framed.filter-animation-draw .filter-item.highlighted:after,
+.filter-pointer-framed.filter-animation-draw .act:before,
+.filter-pointer-framed.filter-animation-draw .act:after {
+  width: 100%;
+  height: 100%;
+}
+.filter-pointer-framed.filter-animation-draw .filter-item:hover:before,
+.filter-pointer-framed.filter-animation-draw .filter-item:focus:before,
+.filter-pointer-framed.filter-animation-draw .filter-item.highlighted:before,
+.filter-pointer-framed.filter-animation-draw .act:before {
+  -webkit-transition: opacity 0.02s, height 0.1s, width 0.1s 0.1s;
+  -o-transition: opacity 0.02s, height 0.1s, width 0.1s 0.1s;
+  transition: opacity 0.02s, height 0.1s, width 0.1s 0.1s;
+}
+.filter-pointer-framed.filter-animation-draw .filter-item:hover:after,
+.filter-pointer-framed.filter-animation-draw .filter-item:focus:after,
+.filter-pointer-framed.filter-animation-draw .filter-item.highlighted:after,
+.filter-pointer-framed.filter-animation-draw .act:after {
+  -webkit-transition: opacity 0.02s 0.2s, height 0.1s 0.2s, width 0.1s 0.3s;
+  -o-transition: opacity 0.02s 0.2s, height 0.1s 0.2s, width 0.1s 0.3s;
+  transition: opacity 0.02s 0.2s, height 0.1s 0.2s, width 0.1s 0.3s;
+}
+.filter-pointer-framed.filter-animation-corners .filter-item:before,
+.filter-pointer-framed.filter-animation-corners .filter-item:after {
+  width: 3px;
+  height: 3px;
+}
+.filter-pointer-framed.filter-animation-corners .filter-item:before {
+  border-width: 3px 0 0 3px;
+}
+.filter-pointer-framed.filter-animation-corners .filter-item:after {
+  content: '';
+  top: initial;
+  bottom: 0;
+  left: initial;
+  right: 0;
+  border-width: 0 3px 3px 0;
+}
+.filter-pointer-framed.filter-animation-corners .filter-item:hover:before,
+.filter-pointer-framed.filter-animation-corners .filter-item:hover:after,
+.filter-pointer-framed.filter-animation-corners .filter-item:focus:before,
+.filter-pointer-framed.filter-animation-corners .filter-item:focus:after,
+.filter-pointer-framed.filter-animation-corners .filter-item.highlighted:before,
+.filter-pointer-framed.filter-animation-corners .filter-item.highlighted:after,
+.filter-pointer-framed.filter-animation-corners .act:before,
+.filter-pointer-framed.filter-animation-corners .act:after {
+  width: 100%;
+  height: 100%;
+  -webkit-transition: opacity 0.002s, width 0.4s, height 0.4s;
+  -o-transition: opacity 0.002s, width 0.4s, height 0.4s;
+  transition: opacity 0.002s, width 0.4s, height 0.4s;
+}
+.filter-pointer-framed.filter-animation-none,
+.filter-pointer-framed.filter-animation-none .filter-item {
+  -webkit-transition-duration: 0s;
+  -o-transition-duration: 0s;
+  transition-duration: 0s;
+}
+.filter-pointer-framed.filter-animation-none:before,
+.filter-pointer-framed.filter-animation-none:after,
+.filter-pointer-framed.filter-animation-none:hover,
+.filter-pointer-framed.filter-animation-none:focus,
+.filter-pointer-framed.filter-animation-none .filter-item:before,
+.filter-pointer-framed.filter-animation-none .filter-item:after,
+.filter-pointer-framed.filter-animation-none .filter-item:hover,
+.filter-pointer-framed.filter-animation-none .filter-item:focus {
+  -webkit-transition-duration: 0s;
+  -o-transition-duration: 0s;
+  transition-duration: 0s;
+}
+.filter-pointer-background .filter-item:before,
+.filter-pointer-background .filter-item:after {
+  content: '';
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+.filter-pointer-background .filter-item:before {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #55595c;
+  z-index: -1;
+}
+.filter-pointer-background .filter-item:hover,
+.filter-pointer-background .filter-item:focus,
+.filter-pointer-background .filter-item.highlighted,
+.filter-pointer-background .act {
+  color: #fff;
+}
+.filter-pointer-background.filter-animation-grow .filter-item:before {
+  -webkit-transform: scale(0.5);
+  -ms-transform: scale(0.5);
+  transform: scale(0.5);
+}
+.filter-pointer-background.filter-animation-grow .filter-item:hover:before,
+.filter-pointer-background.filter-animation-grow .filter-item:focus:before,
+.filter-pointer-background.filter-animation-grow .filter-item.highlighted:before,
+.filter-pointer-background.filter-animation-grow .act:before {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 1;
+}
+.filter-pointer-background.filter-animation-shrink .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):before {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+.filter-pointer-background.filter-animation-shrink .filter-item:hover:before,
+.filter-pointer-background.filter-animation-shrink .filter-item:focus:before,
+.filter-pointer-background.filter-animation-shrink .filter-item.highlighted:before,
+.filter-pointer-background.filter-animation-shrink .act:before {
+  -webkit-transition: opacity 0.15s, -webkit-transform 0.4s;
+  transition: opacity 0.15s, -webkit-transform 0.4s;
+  -o-transition: opacity 0.15s, transform 0.4s;
+  transition: opacity 0.15s, transform 0.4s;
+  transition: opacity 0.15s, transform 0.4s, -webkit-transform 0.4s;
+}
+.filter-pointer-background.filter-animation-sweep-left .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):before {
+  left: 100%;
+}
+.filter-pointer-background.filter-animation-sweep-right .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):before {
+  right: 100%;
+}
+.filter-pointer-background.filter-animation-sweep-up .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):before {
+  top: 100%;
+}
+.filter-pointer-background.filter-animation-sweep-down .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):before {
+  bottom: 100%;
+}
+.filter-pointer-background.filter-animation-shutter-out-vertical .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):before {
+  bottom: 50%;
+  top: 50%;
+}
+.filter-pointer-background.filter-animation-shutter-out-horizontal .filter-item:not(:hover):not(:focus):not(.act):not(.highlighted):before {
+  right: 50%;
+  left: 50%;
+}
+.filter-pointer-background.filter-animation-shutter-in-vertical .filter-item:after,
+.filter-pointer-background.filter-animation-shutter-in-horizontal .filter-item:after {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #55595c;
+  z-index: -1;
+}
+.filter-pointer-background.filter-animation-shutter-in-vertical .filter-item:before {
+  top: 0;
+  bottom: 100%;
+}
+.filter-pointer-background.filter-animation-shutter-in-vertical .filter-item:after {
+  top: 100%;
+  bottom: 0;
+}
+.filter-pointer-background.filter-animation-shutter-in-vertical .filter-item:hover:before,
+.filter-pointer-background.filter-animation-shutter-in-vertical .filter-item:focus:before,
+.filter-pointer-background.filter-animation-shutter-in-vertical .filter-item.highlighted:before,
+.filter-pointer-background.filter-animation-shutter-in-vertical .act:before {
+  bottom: 50%;
+}
+.filter-pointer-background.filter-animation-shutter-in-vertical .filter-item:hover:after,
+.filter-pointer-background.filter-animation-shutter-in-vertical .filter-item:focus:after,
+.filter-pointer-background.filter-animation-shutter-in-vertical .filter-item.highlighted:after,
+.filter-pointer-background.filter-animation-shutter-in-vertical .act:after {
+  top: 50%;
+}
+.filter-pointer-background.filter-animation-shutter-in-horizontal .filter-item:before {
+  right: 0;
+  left: 100%;
+}
+.filter-pointer-background.filter-animation-shutter-in-horizontal .filter-item:after {
+  right: 100%;
+  left: 0;
+}
+.filter-pointer-background.filter-animation-shutter-in-horizontal .filter-item:hover:before,
+.filter-pointer-background.filter-animation-shutter-in-horizontal .filter-item:focus:before,
+.filter-pointer-background.filter-animation-shutter-in-horizontal .filter-item.highlighted:before,
+.filter-pointer-background.filter-animation-shutter-in-horizontal .act:before {
+  left: 50%;
+}
+.filter-pointer-background.filter-animation-shutter-in-horizontal .filter-item:hover:after,
+.filter-pointer-background.filter-animation-shutter-in-horizontal .filter-item:focus:after,
+.filter-pointer-background.filter-animation-shutter-in-horizontal .filter-item.highlighted:after,
+.filter-pointer-background.filter-animation-shutter-in-horizontal .act:after {
+  right: 50%;
+}
+.filter-pointer-background.filter-animation-none,
+.filter-pointer-background.filter-animation-none .filter-item {
+  -webkit-transition-duration: 0s;
+  -o-transition-duration: 0s;
+  transition-duration: 0s;
+}
+.filter-pointer-background.filter-animation-none:before,
+.filter-pointer-background.filter-animation-none:after,
+.filter-pointer-background.filter-animation-none:hover,
+.filter-pointer-background.filter-animation-none:focus,
+.filter-pointer-background.filter-animation-none .filter-item:before,
+.filter-pointer-background.filter-animation-none .filter-item:after,
+.filter-pointer-background.filter-animation-none .filter-item:hover,
+.filter-pointer-background.filter-animation-none .filter-item:focus {
+  -webkit-transition-duration: 0s;
+  -o-transition-duration: 0s;
+  transition-duration: 0s;
+}
+.filter-pointer-text.filter-animation-skew .filter-item:hover,
+.filter-pointer-text.filter-animation-skew .filter-item:focus {
+  -webkit-transform: skew(-8deg);
+  -ms-transform: skew(-8deg);
+  transform: skew(-8deg);
+}
+.filter-pointer-text.filter-animation-grow .filter-item:hover,
+.filter-pointer-text.filter-animation-grow .filter-item:focus {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
+.filter-pointer-text.filter-animation-shrink .filter-item:hover,
+.filter-pointer-text.filter-animation-shrink .filter-item:focus {
+  -webkit-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  transform: scale(0.8);
+}
+.filter-pointer-text.filter-animation-float .filter-item:hover,
+.filter-pointer-text.filter-animation-float .filter-item:focus {
+  -webkit-transform: translateY(-8px);
+  -ms-transform: translateY(-8px);
+  transform: translateY(-8px);
+}
+.filter-pointer-text.filter-animation-sink .filter-item:hover,
+.filter-pointer-text.filter-animation-sink .filter-item:focus {
+  -webkit-transform: translateY(8px);
+  -ms-transform: translateY(8px);
+  transform: translateY(8px);
+}
+.filter-pointer-text.filter-animation-rotate .filter-item:hover,
+.filter-pointer-text.filter-animation-rotate .filter-item:focus {
+  -webkit-transform: rotate(6deg);
+  -ms-transform: rotate(6deg);
+  transform: rotate(6deg);
+}
+.filter-pointer-text.filter-animation-none,
+.filter-pointer-text.filter-animation-none .filter-item {
+  -webkit-transition-duration: 0s;
+  -o-transition-duration: 0s;
+  transition-duration: 0s;
+}
+.filter-pointer-text.filter-animation-none:before,
+.filter-pointer-text.filter-animation-none:after,
+.filter-pointer-text.filter-animation-none:hover,
+.filter-pointer-text.filter-animation-none:focus,
+.filter-pointer-text.filter-animation-none .filter-item:before,
+.filter-pointer-text.filter-animation-none .filter-item:after,
+.filter-pointer-text.filter-animation-none .filter-item:hover,
+.filter-pointer-text.filter-animation-none .filter-item:focus {
+  -webkit-transition-duration: 0s;
+  -o-transition-duration: 0s;
+  transition-duration: 0s;
+}
+.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4).filter-pointer-underline a.filter-item:after,
+.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4).filter-pointer-overline a.filter-item:before,
+.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4).filter-pointer-double-line a.filter-item:before,
+.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4).filter-pointer-double-line a.filter-item:after {
+  height: var(--filter-pointer-border-width);
+}
+.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4).filter-pointer-background a.filter-item:after,
+.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4).filter-pointer-background a.filter-item:before {
+  border-radius: var(--filter-pointer-bg-radius);
+}
+.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4):not(.filter-pointer-framed) a.filter-item:before,
+.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4):not(.filter-pointer-framed) a.filter-item:after {
+  background: var(--filter-pointer-bg-color-hover);
+}
+.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4):not(.filter-pointer-framed) a.filter-item.act:before,
+.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4):not(.filter-pointer-framed) a.filter-item.act:after {
+  background: var(--filter-pointer-bg-color-active);
+}
+.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4).filter-pointer-framed a.filter-item:before {
+  border-color: var(--filter-pointer-bg-color-hover);
+  border-width: var(--filter-pointer-border-width);
+}
+.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4).filter-pointer-framed a.filter-item:after {
+  border-color: var(--filter-pointer-bg-color-hover);
+}
+.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4).filter-pointer-framed a.filter-item.act:before,
+.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4).filter-pointer-framed a.filter-item.act:after {
+  border-color: var(--filter-pointer-bg-color-active);
+}
+.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4).filter-pointer-framed.filter-animation-draw a.filter-item:before {
+  border-width: 0 0 var(--filter-pointer-border-width) var(--filter-pointer-border-width);
+}
+.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4).filter-pointer-framed.filter-animation-draw a.filter-item:after {
+  border-width: var(--filter-pointer-border-width) var(--filter-pointer-border-width) 0 0;
+}
+.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4).filter-pointer-framed.filter-animation-corners a.filter-item:before {
+  border-width: var(--filter-pointer-border-width) 0 0 var(--filter-pointer-border-width);
+}
+.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4).filter-pointer-framed.filter-animation-corners a.filter-item:after {
+  border-width: 0 var(--filter-pointer-border-width) var(--filter-pointer-border-width) 0;
+}
+.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4) a.filter-item {
+  color: var(--filter-title-color-normal);
+}
+.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4) a.filter-item:hover,
+.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4) a.filter-item:focus {
+  color: var(--filter-title-color-hover);
+}
+.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4) a.filter-item.act {
+  color: var(--filter-title-color-active);
+}
+.filter.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4) .filter-extras a i {
+  color: var(--filter-title-color-normal);
+}
+#page .filter.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4) .filter-switch {
+  background-color: var(--filter-pointer-bg-color-active);
+  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.8) 100%);
+}
+#page .filter.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4) .filter-switch-toggle {
+  background: var(--filter-pointer-bg-color-active);
+}
+.paginator.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4) .dots,
+.paginator.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4) .nav-next i,
+.paginator.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4) .nav-prev i {
+  color: var(--filter-title-color-normal);
+}
+.paginator.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4) a.button-load-more {
+  border: inherit;
+  transition: opacity 0.01s ease, color 0.05s ease;
+  color: var(--filter-title-color-normal);
+}
+.paginator.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4) a.button-load-more:hover,
+.paginator.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4) a.button-load-more:focus {
+  color: var(--filter-title-color-hover);
+}
+.paginator.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4) a.button-load-more * {
+  color: inherit;
+  transition: inherit;
+}
+.paginator.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4) a.button-load-more .button-caption:before {
+  content: "";
+  margin: 0;
+}
+.paginator.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4):not(.filter-pointer-framed) a.button-load-more.highlighted:not(:hover):before,
+.paginator.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4):not(.filter-pointer-framed) a.button-load-more.highlighted:not(:hover):after {
+  background: var(--filter-pointer-bg-color-normal);
+}
+.paginator.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4).filter-pointer-framed a.button-load-more.highlighted:not(:hover):before,
+.paginator.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4).filter-pointer-framed a.button-load-more.highlighted:not(:hover):after {
+  border-color: var(--filter-pointer-bg-color-normal);
+}
+.elementor-element.elementor-widget .entry-title a,
+.elementor-element.elementor-widget .entry-meta a,
+.elementor-element.elementor-widget .entry-meta > span,
+.elementor-element.elementor-widget .portfolio-categories a,
+.elementor-element.elementor-widget .portfolio-categories > span {
+  text-decoration: inherit;
+}
+.elementor-element.elementor-widget .entry-title a:hover,
+.elementor-element.elementor-widget .entry-meta a:hover,
+.elementor-element.elementor-widget .entry-meta > span:hover,
+.elementor-element.elementor-widget .portfolio-categories a:hover,
+.elementor-element.elementor-widget .portfolio-categories > span:hover {
+  text-decoration: inherit;
+}
+.elementor-widget.elementor-widget-the7_elements {
+  /*Always show description*/
+  /*Show icons*/
+  /* #Direction aware
+-------------------------------------------------- */
+  /* #Scale In
+-------------------------------------------------- */
+}
+.elementor-widget.elementor-widget-the7_elements .filter {
+  flex-wrap: wrap;
+}
+.elementor-widget.elementor-widget-the7_elements article {
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -ms-align-items: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+}
+.elementor-widget.elementor-widget-the7_elements .mode-masonry:not(.bottom-overlap-layout-list) article,
+.elementor-widget.elementor-widget-the7_elements .mode-grid:not(.bottom-overlap-layout-list) article {
+  -ms-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+  -ms-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+.elementor-widget.elementor-widget-the7_elements .bottom-overlap-layout-list article {
+  -ms-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+  -ms-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.elementor-widget.elementor-widget-the7_elements .gradient-overlay-layout-list.mode-grid article,
+.elementor-widget.elementor-widget-the7_elements .content-rollover-layout-list.mode-grid article {
+  height: auto;
+}
+.elementor-widget.elementor-widget-the7_elements .hover-grid article,
+.elementor-widget.elementor-widget-the7_elements .hover-grid-reverse article {
+  position: relative;
+  overflow: hidden;
+}
+.elementor-widget.elementor-widget-the7_elements .gradient-overlay-layout-list article {
+  overflow: hidden;
+  transform: translateZ(0);
+}
+.elementor-widget.elementor-widget-the7_elements .scale-img .post-thumbnail-rollover,
+.elementor-widget.elementor-widget-the7_elements .quick-scale-img .post-thumbnail-rollover {
+  transform: translateZ(0);
+}
+.elementor-widget.elementor-widget-the7_elements .post-thumbnail-wrap {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  -ms-flex: 0 0 auto;
+}
+.elementor-widget.elementor-widget-the7_elements .post-thumbnail {
+  position: relative;
+  display: block;
+}
+.elementor-widget.elementor-widget-the7_elements .post-thumbnail:not(.overlay-placeholder) > .post-thumbnail-rollover img {
+  width: 100%;
+}
+.mobile-false .elementor-widget.elementor-widget-the7_elements .quick-scale-img.gradient-overlay-layout-list article:hover .post-thumbnail:not(.overlay-placeholder) > .post-thumbnail-rollover img,
+.mobile-false .elementor-widget.elementor-widget-the7_elements .quick-scale-img.content-rollover-layout-list article:hover .post-thumbnail:not(.overlay-placeholder) > .post-thumbnail-rollover img,
+.mobile-false .elementor-widget.elementor-widget-the7_elements .quick-scale-img.gradient-overlap-layout-list article:hover .post-thumbnail:not(.overlay-placeholder) > .post-thumbnail-rollover img {
+  transform: scale(1.2);
+  transition: transform 0.25s ease-out;
+}
+.mobile-true .elementor-widget.elementor-widget-the7_elements .quick-scale-img.gradient-overlay-layout-list article.is-clicked .post-thumbnail:not(.overlay-placeholder) > .post-thumbnail-rollover img,
+.mobile-true .elementor-widget.elementor-widget-the7_elements .quick-scale-img.content-rollover-layout-list article.is-clicked .post-thumbnail:not(.overlay-placeholder) > .post-thumbnail-rollover img {
+  transform: scale(1.2);
+  transition: transform 0.25s ease-out;
+}
+.mobile-false .elementor-widget.elementor-widget-the7_elements .gradient-overlap-layout-list.scale-img article:hover .post-thumbnail > .post-thumbnail-rollover img,
+.mobile-true .elementor-widget.elementor-widget-the7_elements .gradient-overlap-layout-list.scale-img .is-clicked .post-thumbnail > .post-thumbnail-rollover img {
+  transform: scale(1.2);
+  transition: transform 4s ease-out;
+}
+.elementor-widget.elementor-widget-the7_elements .post-entry-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+}
+.elementor-widget.elementor-widget-the7_elements .post-entry-content {
+  line-height: 0;
+  position: relative;
+  z-index: 10;
+}
+@keyframes fadeInFromNone {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  1% {
+    visibility: visible;
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+@keyframes fadeToNone {
+  0% {
+    opacity: 1;
+  }
+  1% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+.elementor-widget.elementor-widget-the7_elements .gradient-overlap-layout-list .post-entry-content {
+  position: relative;
+  margin-top: -125px;
+  z-index: 1;
+  padding-top: 90px;
+}
+.elementor-widget.elementor-widget-the7_elements .gradient-overlap-layout-list .post-entry-content:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 150px;
+  content: "";
+}
+.elementor-widget.elementor-widget-the7_elements .gradient-overlay-layout-list .post-entry-content {
+  position: absolute;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -ms-flex-pack: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -ms-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+  background: none;
+  width: 100%;
+  min-height: 100%;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  transition: opacity 0.35s;
+}
+.mobile-true .elementor-widget.elementor-widget-the7_elements .hover-scale.gradient-overlay-layout-list .post-entry-conten {
+  opacity: 0;
+}
+.mobile-false .elementor-widget.elementor-widget-the7_elements .hover-scale .post-entry-content {
+  transform: scale(0);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s;
+}
+.mobile-false .elementor-widget.elementor-widget-the7_elements .hover-scale article:hover .post-entry-content {
+  opacity: 1;
+  transform: scale(1);
+}
+.mobile-false .elementor-widget.elementor-widget-the7_elements .hover-scale .rollover-project:hover:after,
+.mobile-false .elementor-widget.elementor-widget-the7_elements .hover-scale article:hover:after,
+.mobile-true .elementor-widget.elementor-widget-the7_elements .hover-scale article.is-clicked:after {
+  opacity: 1;
+  transform: scale(2);
+}
+.elementor-widget.elementor-widget-the7_elements .hover-grid .post-entry-content,
+.elementor-widget.elementor-widget-the7_elements .hover-grid-reverse .post-entry-content {
+  opacity: 0;
+}
+.mobile-false .elementor-widget.elementor-widget-the7_elements .hover-grid article:hover .post-entry-content,
+.mobile-false .elementor-widget.elementor-widget-the7_elements .hover-grid-reverse article:hover .post-entry-content,
+.mobile-true .elementor-widget.elementor-widget-the7_elements .hover-grid .is-clicked .post-entry-content,
+.mobile-true .elementor-widget.elementor-widget-the7_elements .hover-grid-reverse .is-clicked .post-entry-content {
+  opacity: 1;
+}
+.mobile-true .elementor-widget.elementor-widget-the7_elements .hover-scale.gradient-overlay-layout-list .is-clicked .post-entry-content,
+.mobile-true .elementor-widget.elementor-widget-the7_elements .hover-scale article.is-clicked .post-entry-content {
+  opacity: 1;
+}
+.elementor-widget.elementor-widget-the7_elements .content-rollover-layout-list .post-entry-content {
+  height: auto;
+  position: absolute;
+}
+.elementor-widget.elementor-widget-the7_elements .gradient-overlay-layout-list.hover-fade article .post-entry-content {
+  opacity: 0;
+  visibility: hidden;
+}
+.mobile-false .elementor-widget.elementor-widget-the7_elements .gradient-overlay-layout-list.hover-fade article:hover .post-entry-content,
+.mobile-true .elementor-widget.elementor-widget-the7_elements .gradient-overlay-layout-list.hover-fade article.is-clicked .post-entry-content {
+  opacity: 1;
+  visibility: visible;
+}
+.mobile-false .elementor-widget.elementor-widget-the7_elements .hover-scale .post-thumbnail-rollover:after {
+  display: none;
+}
+.elementor-widget.elementor-widget-the7_elements .entry-excerpt {
+  overflow: hidden;
+}
+.elementor-widget.elementor-widget-the7_elements .entry-meta * {
+  color: inherit;
+}
+.elementor-widget.elementor-widget-the7_elements .entry-meta {
+  padding: 0;
+}
+.elementor-widget.elementor-widget-the7_elements .entry-meta > span a {
+  display: inline-block;
+}
+#page .elementor-widget.elementor-widget-the7_elements .the7-elementor-widget:not(.keep-custom-css) .entry-title a {
+  transition: color 0.3s;
+}
+#page .elementor-widget.elementor-widget-the7_elements .the7-elementor-widget:not(.keep-custom-css) .entry-title a:hover {
+  background: inherit;
+  color: inherit;
+}
+.elementor-widget.elementor-widget-the7_elements .post-thumbnail > .post-thumbnail-rollover:after {
+  opacity: 1;
+  transition: background-color 0.3s;
+}
+.elementor-widget.elementor-widget-the7_elements .enable-bg-rollover .post-thumbnail > .post-thumbnail-rollover:after {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.elementor-widget.elementor-widget-the7_elements .post-thumbnail:hover > .post-thumbnail-rollover:after,
+.mobile-true .elementor-widget.elementor-widget-the7_elements .is-clicked .post-thumbnail > .post-thumbnail-rollover:after,
+.elementor-widget.elementor-widget-the7_elements .gradient-overlap-layout-list article:hover .post-thumbnail-rollover:after,
+.mobile-true .elementor-widget.elementor-widget-the7_elements .gradient-overlap-layout-list .is-clicked .post-thumbnail-rollover:after {
+  opacity: 1;
+}
+.elementor-widget.elementor-widget-the7_elements .description-under-image .post-thumbnail-wrap {
+  text-align: center;
+  line-height: 0;
+}
+.elementor-widget.elementor-widget-the7_elements .project-links-container a {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  font-size: 0;
+  line-height: 0;
+  opacity: 0;
+  text-align: center;
+  -webkit-backface-visibility: hidden;
+  transition: opacity 0.3s;
+  border-radius: var(--the7-base-border-radius);
+}
+.elementor-widget.elementor-widget-the7_elements .project-links-container a:before,
+.elementor-widget.elementor-widget-the7_elements .project-links-container a:after {
+  position: absolute;
+  background: none;
+  border-style: solid;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  box-sizing: border-box;
+  border-radius: inherit;
+  transition: none;
+  -webkit-backface-visibility: hidden;
+}
+.elementor-widget.elementor-widget-the7_elements .project-links-container a:before,
+.elementor-widget.elementor-widget-the7_elements .project-links-container a:hover:after {
+  opacity: 1;
+}
+.elementor-widget.elementor-widget-the7_elements .project-links-container a:after,
+.elementor-widget.elementor-widget-the7_elements .project-links-container a:hover:before {
+  opacity: 0;
+}
+.elementor-widget.elementor-widget-the7_elements .project-links-container a:hover:before,
+.elementor-widget.elementor-widget-the7_elements .project-links-container a:not(:hover):after {
+  transition-delay: 0.1s;
+}
+.elementor-widget.elementor-widget-the7_elements .project-links-container a > span {
+  position: relative;
+  z-index: 2;
+  transition: color 0.25s;
+  vertical-align: middle;
+}
+.elementor-widget.elementor-widget-the7_elements .post-entry-content:hover .project-links-container a,
+.elementor-widget.elementor-widget-the7_elements .post-thumbnail:hover .project-links-container a,
+.elementor-widget.elementor-widget-the7_elements .gradient-overlap-layout-list article:hover .project-links-container a {
+  opacity: 1;
+}
+.elementor-widget.elementor-widget-the7_elements .post-thumbnail-wrap .project-links-container {
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -ms-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.elementor-widget.elementor-widget-the7_elements .gradient-overlap-layout-list .project-links-container {
+  height: calc(100% - 125px);
+}
+.elementor-widget.elementor-widget-the7_elements .entry-meta .meta-item {
+  padding: 0;
+  margin: 0;
+}
+.elementor-widget.elementor-widget-the7_elements .entry-meta .meta-item:not(:last-child) {
+  margin: 0 5px 0 0;
+}
+.elementor-widget.elementor-widget-the7_elements .entry-meta .meta-item:not(:first-child):before {
+  position: relative;
+  box-shadow: none;
+  margin: 0 5px 0 0;
+  height: auto;
+  width: auto;
+  content: '';
+}
+.elementor-widget.elementor-widget-the7_elements .entry-meta .meta-item:after {
+  right: inherit;
+  width: inherit;
+  height: inherit;
+  top: inherit;
+  transform: inherit;
+  content: "";
+  background: none;
+}
+.elementor-widget.elementor-widget-the7_elements .entry-meta > .data-link:hover {
+  text-decoration: none;
+}
+.elementor-widget.elementor-widget-the7_elements .paginator a.button-load-more {
+  width: auto;
+  height: auto;
+}
+.elementor-widget.elementor-widget-the7_elements .paginator a.button-load-more i {
+  line-height: inherit;
+  font-size: inherit;
+}
+.elementor-widget.elementor-widget-the7_elements .paginator .disabled {
+  display: none;
+}
+.elementor-widget.elementor-widget-the7_elements .hidden {
+  display: none;
+  opacity: 0;
+}
+.elementor-widget.elementor-widget-the7_elements .bottom-overlap-layout-list article:not(.no-img) .project-links-container {
+  height: calc(100% - 100px);
+}
+.elementor-widget.elementor-widget-the7_elements .bottom-overlap-layout-list article:not(.no-img) .post-entry-content {
+  margin-top: -100px;
+}
+.elementor-widget.elementor-widget-the7_elements .description-under-image .post-entry-content,
+.elementor-widget.elementor-widget-the7_elements .description-on-hover .post-entry-content .post-entry-body {
+  width: 100%;
+}
+.elementor-widget.elementor-widget-the7_elements .post-entry-content,
+.elementor-widget.elementor-widget-the7_elements .content-rollover-layout-list .post-entry-wrapper {
+  padding: 30px;
+}
+.elementor-widget.elementor-widget-the7_elements .classic-layout-list .post-thumbnail {
+  width: 100%;
+}
+.elementor-widget.elementor-widget-the7_elements .entry-title {
+  margin-bottom: 10px;
+}
+.elementor-widget.elementor-widget-the7_elements .content-rollover-layout-list.meta-info-off .post-entry-wrapper {
+  bottom: -10px;
+}
+.elementor-widget.elementor-widget-the7_elements .entry-meta {
+  margin-bottom: 10px;
+}
+.elementor-widget.elementor-widget-the7_elements .content-rollover-layout-list .post-entry-wrapper {
+  bottom: -10px;
+}
+.elementor-widget.elementor-widget-the7_elements .entry-excerpt {
+  margin-bottom: 20px;
+}
+.elementor-widget.elementor-widget-the7_elements .entry-excerpt p:last-child {
+  margin-bottom: 0;
+}
+.elementor-widget.elementor-widget-the7_elements .project-links-container a {
+  width: 40px;
+  line-height: 40px;
+  margin: 0px;
+}
+.elementor-widget.elementor-widget-the7_elements .project-links-container a:before,
+.elementor-widget.elementor-widget-the7_elements .project-links-container a:after {
+  border-width: 0px;
+  border-color: var(--the7-accent-color);
+  background-color: var(--the7-accent-color);
+  background-image: linear-gradient(var(--the7-accent-gradient));
+  box-shadow: none;
+}
+.elementor-widget.elementor-widget-the7_elements .project-links-container a:not(:hover) > span {
+  color: #fff;
+}
+.elementor-widget.elementor-widget-the7_elements .project-links-container a > span {
+  font-size: 16px;
+  color: #fff;
+}
+.elementor-widget.elementor-widget-the7_elements .project-links-container a > span:before {
+  line-height: 40px;
+}
+.elementor-widget.elementor-widget-the7_elements .post-details {
+  line-height: 1;
+}
+.elementor-widget.elementor-widget-the7_elements .post-details i:first-child {
+  margin-right: 5px;
+}
+.elementor-widget.elementor-widget-the7_elements .post-details i:last-child {
+  margin-left: 5px;
+}
+.elementor-widget.elementor-widget-the7_elements .filter {
+  --filter-title-color-normal: var(--the7-title-color);
+  --filter-title-color-hover: var(--the7-title-color);
+  --filter-title-color-active: var(--the7-title-color);
+  --filter-pointer-border-width: var(--the7-filter-pointer-border-width);
+  --filter-pointer-bg-radius: var(--the7-filter-pointer-bg-radius);
+  --filter-pointer-bg-color-active: var(--the7-accent-color);
+  --filter-pointer-bg-color-hover: var(--the7-accent-color);
+  line-height: 1;
+}
+.elementor-widget.elementor-widget-the7_elements .filter.filter-without-decoration {
+  --filter-title-color-hover: var(--the7-accent-color);
+  --filter-title-color-active: var(--the7-accent-color);
+}
+.elementor-widget.elementor-widget-the7_elements .filter.filter-bg-decoration {
+  --filter-title-color-hover: var(--the7-accent-color);
+  --filter-title-color-active: #fff;
+}
+.elementor-widget.elementor-widget-the7_elements .filter.filter-bg-decoration .filter-categories a.act {
+  background: var(--filter-pointer-bg-color-active);
+}
+.elementor-widget.elementor-widget-the7_elements .filter.filter-underline-decoration {
+  --filter-title-color-hover: var(--the7-title-color);
+  --filter-title-color-active: var(--the7-title-color);
+  --filter-pointer-bg-color-hover: var(--the7-accent-color);
+}
+.accent-gradient .elementor-widget.elementor-widget-the7_elements .filter.filter-underline-decoration .filter-categories {
+  --filter-pointer-bg-color-hover: linear-gradient(var(--the7-accent-gradient));
+  --filter-pointer-bg-color-active: linear-gradient(var(--the7-accent-gradient));
+}
+.accent-gradient .elementor-widget.elementor-widget-the7_elements .filter.filter-bg-decoration .filter-categories {
+  --filter-pointer-bg-color-hover: linear-gradient(var(--the7-accent-gradient));
+  --filter-pointer-bg-color-active: linear-gradient(var(--the7-accent-gradient));
+}
+.accent-gradient .elementor-widget.elementor-widget-the7_elements .filter.filter-bg-decoration .filter-categories a:not(.act):hover {
+  --filter-title-color-hover: transparent;
+  background: var(--filter-pointer-bg-color-hover);
+  -webkit-background-clip: text;
+}
+.accent-gradient .elementor-widget.elementor-widget-the7_elements .filter.filter-without-decoration .filter-categories {
+  --filter-pointer-bg-color-hover: linear-gradient(var(--the7-accent-gradient));
+  --filter-pointer-bg-color-active: linear-gradient(var(--the7-accent-gradient));
+  --filter-title-color-hover: transparent;
+  --filter-title-color-active: transparent;
+}
+.accent-gradient .elementor-widget.elementor-widget-the7_elements .filter.filter-without-decoration .filter-categories a:hover {
+  background: var(--filter-pointer-bg-color-hover);
+  -webkit-background-clip: text;
+}
+.accent-gradient .elementor-widget.elementor-widget-the7_elements .filter.filter-without-decoration .filter-categories a.act {
+  background: var(--filter-pointer-bg-color-active);
+  -webkit-background-clip: text;
+}
+.elementor-widget.elementor-widget-the7_elements .paginator {
+  --filter-title-color-normal: var(--the7-title-color);
+  --filter-title-color-hover: var(--the7-title-color);
+  --filter-title-color-active: var(--the7-title-color);
+  --filter-pointer-border-width: 2px;
+  --filter-pointer-bg-radius: var(--the7-general-border-radius);
+  --filter-pointer-bg-color-active: var(--the7-accent-color);
+  --filter-pointer-bg-color-hover: var(--the7-accent-color);
+  line-height: var(--the7-text-big-line-height);
+  font-size: var(--the7-text-big-font-size);
+  font-weight: normal;
+  line-height: 1;
+}
+.elementor-widget.elementor-widget-the7_elements .paginator .button-load-more {
+  line-height: 1;
+}
+.elementor-widget.elementor-widget-the7_elements .paginator .button-load-more .button-caption {
+  font-weight: inherit;
+}
+.elementor-widget.elementor-widget-the7_elements .paginator .button-load-more i:first-child {
+  margin: 0 5px 0 0;
+}
+.elementor-widget.elementor-widget-the7_elements .paginator .button-load-more i:last-child {
+  margin: 0 0 0 5px;
+}
+.elementor-widget.elementor-widget-the7_elements .paginator a {
+  font-weight: normal;
+  margin: 0 5px;
+  padding: 5px 10px;
+}
+.accent-gradient .elementor-widget.elementor-widget-the7_elements .paginator {
+  --filter-pointer-bg-color-hover: linear-gradient(var(--the7-accent-gradient));
+  --filter-pointer-bg-color-active: linear-gradient(var(--the7-accent-gradient));
+}
+.elementor-widget.elementor-widget-the7_elements .rollover-project {
+  position: relative;
+  overflow: hidden;
+}
+.elementor-widget.elementor-widget-the7_elements .post .rollover-project.alignnone {
+  margin-bottom: 0;
+}
+.elementor-widget.elementor-widget-the7_elements .rollover-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: none;
+  width: 100%;
+  height: 100%;
+  padding: 10px 25px 10px;
+  box-sizing: border-box;
+  -webkit-transition: opacity 400ms ease;
+  transition: opacity 400ms ease;
+}
+.mobile-true .hover-style-two:not(.effect-layla):not(.effect-bubba):not(.effect-sarah) .elementor-widget.elementor-widget-the7_elements .rollover-content {
+  display: none;
+}
+.elementor-widget.elementor-widget-the7_elements .rollover-content:hover {
+  cursor: pointer;
+}
+.elementor-widget.elementor-widget-the7_elements .mobile-false .rollover-content {
+  display: block;
+  opacity: 0;
+}
+.elementor-widget.elementor-widget-the7_elements .mobile-false .rollover-project:hover .rollover-content,
+.elementor-widget.elementor-widget-the7_elements .mobile-false .buttons-on-img:hover .rollover-content {
+  opacity: 1;
+}
+.elementor-widget.elementor-widget-the7_elements .hover-grid .rollover-content,
+.elementor-widget.elementor-widget-the7_elements .mobile-false .text-on-img.hover-grid .dt-owl-item {
+  overflow: hidden;
+}
+.elementor-widget.elementor-widget-the7_elements .mobile-true .rollover-content.hide-content {
+  display: none;
+}
+.elementor-widget.elementor-widget-the7_elements .mobile-true .albums .rollover-content,
+.elementor-widget.elementor-widget-the7_elements .mobile-true .media .rollover-content,
+.elementor-widget.elementor-widget-the7_elements .mobile-true .buttons-on-img .rollover-content {
+  opacity: 0;
+}
+.elementor-widget.elementor-widget-the7_elements .mobile-true .is-clicked.rollover-content,
+.elementor-widget.elementor-widget-the7_elements .mobile-true .is-clicked .buttons-on-img i {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.elementor-widget.elementor-widget-the7_elements .always-show-info .rollover-content,
+.elementor-widget.elementor-widget-the7_elements .always-show-info .rollover-content-container {
+  display: block;
+  opacity: 1 !important;
+}
+.elementor-widget.elementor-widget-the7_elements .rollover-content-container {
+  position: relative;
+  box-sizing: border-box;
+}
+.elementor-widget.elementor-widget-the7_elements .links-container {
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -ms-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  -ms-justify-content: center;
+  justify-content: center;
+}
+.description-under-image .elementor-widget.elementor-widget-the7_elements .links-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.effect-sarah .elementor-widget.elementor-widget-the7_elements .links-container {
+  -ms-flex-pack: flex-start;
+  -ms-justify-content: flex-start;
+  justify-content: flex-start;
+}
+.content-align-left-bottom.hover-style-two .elementor-widget.elementor-widget-the7_elements .links-container,
+.content-align-left.hover-style-three .elementor-widget.elementor-widget-the7_elements .links-container {
+  position: absolute;
+  display: block;
+  top: 15px;
+  right: 15px;
+}
+.content-align-left-top.hover-style-two .elementor-widget.elementor-widget-the7_elements .links-container {
+  position: absolute;
+  display: block;
+  bottom: 15px;
+  right: 15px;
+  text-align: right;
+}
+.effect-layla .elementor-widget.elementor-widget-the7_elements .links-container,
+.effect-bubba .elementor-widget.elementor-widget-the7_elements .links-container,
+.effect-sarah .elementor-widget.elementor-widget-the7_elements .links-container {
+  margin-top: 10px;
+}
+.elementor-widget.elementor-widget-the7_elements .mobile-true .links-container {
+  visibility: hidden;
+}
+.elementor-widget.elementor-widget-the7_elements .mobile-true .is-clicked .links-container,
+.elementor-widget.elementor-widget-the7_elements .mobile-true .effect-layla.always-show-info .links-container,
+.elementor-widget.elementor-widget-the7_elements .mobile-true .effect-bubba.always-show-info .links-container,
+.elementor-widget.elementor-widget-the7_elements .mobile-true .effect-sarah.always-show-info .links-container {
+  visibility: visible;
+}
+.elementor-widget.elementor-widget-the7_elements .mobile-true .hover-style-two:not(.effect-layla):not(.effect-bubba):not(.effect-sarah) .is-clicked .links-container {
+  -webkit-transition-delay: 300ms;
+  transition-delay: 300ms;
+}
+.elementor-widget.elementor-widget-the7_elements .links-container > a {
+  position: relative;
+  display: -ms-inline-flexbox;
+  display: -ms-inline-flex;
+  display: inline-flex;
+  -ms-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  font-size: 0;
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+  border-radius: 100px;
+  margin: 10px 5px 10px;
+  opacity: 1;
+  text-align: center;
+  -webkit-transition: opacity 300ms ease;
+  transition: opacity 300ms ease;
+  -webkit-backface-visibility: hidden;
+}
+.effect-sarah .elementor-widget.elementor-widget-the7_elements .links-container > a {
+  margin: 5px 10px 5px 0;
+}
+.elementor-widget.elementor-widget-the7_elements .links-container > a:before,
+.elementor-widget.elementor-widget-the7_elements .links-container > a:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  box-sizing: border-box;
+  -webkit-border-radius: inherit;
+  border-radius: inherit;
+  -webkit-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;
+  -webkit-backface-visibility: hidden;
+}
+.disable-icon-hover-bg .elementor-widget.elementor-widget-the7_elements .links-container > a:before,
+.disable-icon-hover-bg .elementor-widget.elementor-widget-the7_elements .links-container > a:after {
+  -webkit-transition: none;
+  transition: none;
+}
+.elementor-widget.elementor-widget-the7_elements .links-container > a:before {
+  background: rgba(255, 255, 255, 0.3);
+}
+.elementor-widget.elementor-widget-the7_elements .links-container > a:after {
+  background: rgba(255, 255, 255, 0.5);
+}
+.elementor-widget.elementor-widget-the7_elements .links-container > a:before,
+.elementor-widget.elementor-widget-the7_elements .links-container > a:hover:after {
+  opacity: 1;
+}
+.elementor-widget.elementor-widget-the7_elements .links-container > a:after,
+.elementor-widget.elementor-widget-the7_elements .links-container > a:hover:before {
+  opacity: 0;
+}
+.elementor-widget.elementor-widget-the7_elements .links-container > a:hover:before,
+.elementor-widget.elementor-widget-the7_elements .links-container > a:not(:hover):after {
+  transition-delay: 0.1s;
+}
+.elementor-widget.elementor-widget-the7_elements .links-container > a > span {
+  position: relative;
+  z-index: 2;
+  -webkit-transition: color 0.25s;
+  transition: color 0.25s;
+  font-size: 16px;
+  line-height: 44px;
+}
+.elementor-widget.elementor-widget-the7_elements .buttons-on-img .links-container > a,
+.elementor-widget.elementor-widget-the7_elements .hover-style-two:not(.hover-color-static) .links-container > a {
+  box-sizing: border-box;
+}
+.elementor-widget.elementor-widget-the7_elements .cs-style-3 .rollover-content-wrap:before,
+.elementor-widget.elementor-widget-the7_elements .description-under-image .links-container:before,
+.elementor-widget.elementor-widget-the7_elements .description-under-image .links-container:after,
+.elementor-widget.elementor-widget-the7_elements .links-container:after,
+.elementor-widget.elementor-widget-the7_elements .links-container:before {
+  content: "";
+  display: table;
+  clear: both;
+}
+#page .elementor-widget.elementor-widget-the7_elements .rollover-content .entry-title a {
+  background: none;
+}
+.elementor-widget.elementor-widget-the7_elements .links-hovers-disabled .rollover-content .entry-title a:hover {
+  background: none;
+  -webkit-background-clip: text;
+}
+#page .elementor-widget.elementor-widget-the7_elements .rollover-content,
+#page .elementor-widget.elementor-widget-the7_elements .rollover-content *,
+#page .elementor-widget.elementor-widget-the7_elements .rollover-content h3.entry-title,
+#page .elementor-widget.elementor-widget-the7_elements .rollover-content h3.entry-title a,
+#page .elementor-widget.elementor-widget-the7_elements .post .rollover-content h4.entry-title a:hover,
+#page .elementor-widget.elementor-widget-the7_elements .post .rollover-content .entry-title a:hover,
+#page .elementor-widget.elementor-widget-the7_elements .rollover-content a:hover,
+#page .elementor-widget.elementor-widget-the7_elements .post .rollover-content h3.entry-title a:hover,
+#page .elementor-widget.elementor-widget-the7_elements .hover-style-one h2.entry-title,
+#page .elementor-widget.elementor-widget-the7_elements .hover-style-two h2.entry-title {
+  color: #fff;
+}
+.elementor-widget.elementor-widget-the7_elements .rollover-content .portfolio-categories > a:after,
+.elementor-widget.elementor-widget-the7_elements .rollover-content .portfolio-categories > span:after {
+  background: #fff;
+}
+#page .elementor-widget.elementor-widget-the7_elements .rollover-content h3.entry-title,
+#page .elementor-widget.elementor-widget-the7_elements .rollover-content .entry-title a,
+#page .elementor-widget.elementor-widget-the7_elements .post .rollover-content .entry-title a:hover,
+#page .elementor-widget.elementor-widget-the7_elements .hover-style-one h2.entry-title,
+#page .elementor-widget.elementor-widget-the7_elements .hover-style-two h2.entry-title,
+#page .elementor-widget.elementor-widget-the7_elements .hover-style-two h4.entry-title {
+  background: none;
+}
+.elementor-widget.elementor-widget-the7_elements .hover-grid .rollover-content {
+  -webkit-transition: none;
+  transition: none;
+}
+.elementor-widget.elementor-widget-the7_elements .mobile-true .hover-grid .rollover-content,
+.elementor-widget.elementor-widget-the7_elements .mobile-true .hover-grid-reverse .rollover-content,
+.elementor-widget.elementor-widget-the7_elements .mobile-true .hover-scale .rollover-content {
+  /*display: block !important;*/
+  top: 0 !important;
+  left: 0 !important;
+  opacity: 0;
+}
+.elementor-widget.elementor-widget-the7_elements .mobile-true .hover-grid .is-clicked .rollover-content,
+.elementor-widget.elementor-widget-the7_elements .mobile-true .hover-grid-reverse .is-clicked .rollover-content,
+.elementor-widget.elementor-widget-the7_elements .mobile-true .hover-scale .is-clicked .rollover-content {
+  opacity: 1;
+}
+.elementor-widget.elementor-widget-the7_elements .mobile-false .hover-scale .rollover-content {
+  background: none;
+}
+.elementor-widget.elementor-widget-the7_elements .hover-scale .post {
+  overflow: hidden;
+}
+.elementor-widget.elementor-widget-the7_elements .hover-scale .rollover-project:after,
+.elementor-widget.elementor-widget-the7_elements .hover-scale .post:after {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  content: "";
+  border-radius: 50%;
+  padding-bottom: 100%;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s;
+}
+.elementor-widget.elementor-widget-the7_elements .hover-scale .post-thumbnail-rollover:after,
+.elementor-widget.elementor-widget-the7_elements .hover-scale .post:after {
+  padding-bottom: 100%;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s;
+}
+#page .elementor-widget.elementor-widget-the7_elements .hover-scale .gradient-overlay-layout-list .post-entry-content {
+  background: none;
+}
+.elementor-widget.elementor-widget-the7_elements .hover-scale .ratio-2.rollover-project:after,
+.elementor-widget.elementor-widget-the7_elements .hover-scale article.ratio-2.post:after {
+  top: -50%;
+}
+.elementor-widget.elementor-widget-the7_elements .hover-scale .ratio_3-2.rollover-project:after,
+.elementor-widget.elementor-widget-the7_elements .hover-scale article.ratio_3-2:after {
+  top: -25%;
+}
+.elementor-widget.elementor-widget-the7_elements .hover-scale .ratio_4-3.rollover-project:after,
+.elementor-widget.elementor-widget-the7_elements .hover-scale article.ratio_4-3:after {
+  top: -16.6666%;
+}
+.elementor-widget.elementor-widget-the7_elements .hover-scale .ratio_2-3.rollover-project:after,
+.elementor-widget.elementor-widget-the7_elements .hover-scale article.ratio_2-3:after {
+  top: 16.6666%;
+}
+.elementor-widget.elementor-widget-the7_elements .hover-scale .ratio_3-4.rollover-project:after,
+.elementor-widget.elementor-widget-the7_elements .hover-scale article.ratio_3-4:after {
+  top: 14.5%;
+}
+.elementor-widget.elementor-widget-the7_elements .mobile-false .hover-scale .rollover-project:hover:after,
+.elementor-widget.elementor-widget-the7_elements .mobile-false .hover-scale article:hover:after,
+.elementor-widget.elementor-widget-the7_elements .mobile-true .hover-scale article.is-clicked:after {
+  opacity: 1;
+  -webkit-transform: scale(1.42);
+  transform: scale(1.42);
+}
+.elementor-widget.elementor-widget-the7_elements .mobile-false .hover-scale .ratio_3-2.rollover-project:hover:after,
+.elementor-widget.elementor-widget-the7_elements .mobile-false .hover-scale article.ratio_3-2:hover:after,
+.elementor-widget.elementor-widget-the7_elements .mobile-true .hover-scale article.is-clicked.ratio_3-2:after {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+.elementor-widget.elementor-widget-the7_elements .mobile-false .hover-scale .ratio_4-3.rollover-project:hover:after,
+.elementor-widget.elementor-widget-the7_elements .mobile-false .hover-scale article.ratio_4-3:hover:after,
+.elementor-widget.elementor-widget-the7_elements .mobile-true .hover-scale article.is-clicked.ratio_4-3:after {
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+}
+.elementor-widget.elementor-widget-the7_elements .mobile-false .hover-scale .ratio_3-4.rollover-project:hover:after,
+.elementor-widget.elementor-widget-the7_elements .mobile-false .hover-scale article.ratio_3-4:hover:after,
+.elementor-widget.elementor-widget-the7_elements .mobile-true .hover-scale article.is-clicked.ratio_3-4:after {
+  -webkit-transform: scale(2);
+  transform: scale(2);
+}
+.elementor-widget.elementor-widget-the7_elements .mobile-false .hover-scale .ratio_2-3.rollover-project:hover:after,
+.elementor-widget.elementor-widget-the7_elements .mobile-false .hover-scale article.ratio_2-3:hover:after,
+.elementor-widget.elementor-widget-the7_elements .mobile-true .hover-scale article.is-clicked.ratio_2-3:after {
+  -webkit-transform: scale(2);
+  transform: scale(2);
+}
+.elementor-widget.elementor-widget-the7_elements .mobile-false .hover-scale .rollover-content {
+  background: none !important;
+  background-color: transparent;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: -webkit-transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s;
+}
+.elementor-widget.elementor-widget-the7_elements .mobile-false .hover-scale .rollover-project:hover .rollover-content {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.elementor-widget.elementor-widget-the7_elements .content-rollover-layout-list:not(.disable-layout-hover) article:hover .post-entry-wrapper {
+  bottom: 0;
+}
+#page .elementor-widget.elementor-widget-the7_elements .post-entry-content .post-details,
+.elementor-widget.elementor-widget-the7_elements .post-entry-content .post-details {
+  float: none;
+  vertical-align: middle;
+  transition: all 0.3s;
+}
+#page .elementor-widget.elementor-widget-the7_elements .post-entry-content .post-details i,
+.elementor-widget.elementor-widget-the7_elements .post-entry-content .post-details i {
+  font-size: inherit;
+  line-height: inherit;
+  vertical-align: middle;
+}

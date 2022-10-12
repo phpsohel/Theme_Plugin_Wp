@@ -1,0 +1,210 @@
+@content-box-overlap: 100px;
+@content-width: 100%;
+@content-padding: 30px;
+@title-spacing: 10px;
+@meta-spacing: 10px;
+@text-spacing: 20px;
+@hover-icon-size: 16px;
+@hover-icon-bg-size: 40px;
+@hover-icon-border-width: 0px;
+@hover-icon-margin: 0px;
+@hover-icon-color: #fff;
+@read-more-icon-spacing: 5px;
+@pagination-item-padding: 5px 10px;
+@pagination-item-marign: 0 5px;
+@pagination-load-more-icon-spacing: 5px;
+
+.bottom-overlap-layout-list article:not(.no-img) {
+  .project-links-container {
+    height: calc(100% - @content-box-overlap);
+  }
+
+  .post-entry-content {
+    margin-top: -1*@content-box-overlap;
+  }
+}
+
+.description-under-image .post-entry-content,
+.description-on-hover .post-entry-content .post-entry-body {
+  width: @content-width;
+}
+
+.post-entry-content,
+.content-rollover-layout-list .post-entry-wrapper {
+  padding: @content-padding;
+}
+
+.classic-layout-list .post-thumbnail {
+  width: 100%;
+}
+
+.entry-title {
+  margin-bottom: @title-spacing;
+}
+
+.content-rollover-layout-list.meta-info-off .post-entry-wrapper {
+  bottom: -1*@title-spacing;
+}
+
+.entry-meta {
+  margin-bottom: @meta-spacing;
+}
+
+.content-rollover-layout-list .post-entry-wrapper {
+  bottom: -1*@meta-spacing;
+}
+
+.entry-excerpt {
+  margin-bottom: @text-spacing;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.project-links-container a {
+  width: @hover-icon-bg-size;
+  line-height: @hover-icon-bg-size;
+  margin: @hover-icon-margin;
+
+  &:before,
+  &:after {
+    border-width: @hover-icon-border-width;
+    border-color: var(--the7-accent-color);
+    background-color: var(--the7-accent-color);
+    background-image: linear-gradient(var(--the7-accent-gradient));
+    box-shadow: none;
+  }
+
+  &:not(:hover) > span {
+    color: @hover-icon-color;
+  }
+
+  > span {
+    font-size: @hover-icon-size;
+    color: @hover-icon-color;
+
+    &:before {
+      line-height: @hover-icon-bg-size;
+    }
+  }
+}
+
+.post-details {
+  line-height: 1;
+
+  i:first-child {
+    margin-right: @read-more-icon-spacing;
+  }
+
+  i:last-child {
+    margin-left: @read-more-icon-spacing;
+  }
+}
+
+.filter {
+  --filter-title-color-normal: var(--the7-title-color);
+  --filter-title-color-hover: var(--the7-title-color);
+  --filter-title-color-active: var(--the7-title-color);
+  --filter-pointer-border-width: var(--the7-filter-pointer-border-width);
+  --filter-pointer-bg-radius: var(--the7-filter-pointer-bg-radius);
+  --filter-pointer-bg-color-active: var(--the7-accent-color);
+  --filter-pointer-bg-color-hover: var(--the7-accent-color);
+  line-height: 1;
+
+  &.filter-without-decoration {
+    --filter-title-color-hover: var(--the7-accent-color);
+    --filter-title-color-active: var(--the7-accent-color);
+  }
+
+  &.filter-bg-decoration {
+    --filter-title-color-hover: var(--the7-accent-color);
+    --filter-title-color-active: #fff;
+
+    .filter-categories a.act {
+      background: var(--filter-pointer-bg-color-active);
+    }
+  }
+
+  &.filter-underline-decoration {
+    --filter-title-color-hover: var(--the7-title-color);
+    --filter-title-color-active: var(--the7-title-color);
+    --filter-pointer-bg-color-hover: var(--the7-accent-color);
+  }
+
+  .accent-gradient & {
+    &.filter-underline-decoration .filter-categories {
+      --filter-pointer-bg-color-hover: linear-gradient(var(--the7-accent-gradient));
+      --filter-pointer-bg-color-active: linear-gradient(var(--the7-accent-gradient));
+    }
+
+    &.filter-bg-decoration .filter-categories {
+      --filter-pointer-bg-color-hover: linear-gradient(var(--the7-accent-gradient));
+      --filter-pointer-bg-color-active: linear-gradient(var(--the7-accent-gradient));
+
+      a:not(.act):hover {
+        --filter-title-color-hover: transparent;
+        background: var(--filter-pointer-bg-color-hover);
+        -webkit-background-clip: text;
+      }
+    }
+
+    &.filter-without-decoration .filter-categories {
+      --filter-pointer-bg-color-hover: linear-gradient(var(--the7-accent-gradient));
+      --filter-pointer-bg-color-active: linear-gradient(var(--the7-accent-gradient));
+      --filter-title-color-hover: transparent;
+      --filter-title-color-active: transparent;
+
+      a:hover {
+        background: var(--filter-pointer-bg-color-hover);
+        -webkit-background-clip: text;
+      }
+
+      a.act {
+        background: var(--filter-pointer-bg-color-active);
+        -webkit-background-clip: text;
+      }
+    }
+  }
+}
+
+.paginator {
+  --filter-title-color-normal: var(--the7-title-color);
+  --filter-title-color-hover: var(--the7-title-color);
+  --filter-title-color-active: var(--the7-title-color);
+  --filter-pointer-border-width: 2px;
+  --filter-pointer-bg-radius: var(--the7-general-border-radius);
+  --filter-pointer-bg-color-active: var(--the7-accent-color);
+  --filter-pointer-bg-color-hover: var(--the7-accent-color);
+  line-height: var(--the7-text-big-line-height);
+  font-size: var(--the7-text-big-font-size);
+  font-weight: normal;
+  line-height: 1;
+
+  .button-load-more {
+    line-height: 1;
+
+    .button-caption {
+      font-weight: inherit;
+    }
+
+    i:first-child {
+      margin: 0 @pagination-load-more-icon-spacing 0 0;
+    }
+
+    i:last-child {
+      margin: 0 0 0 @pagination-load-more-icon-spacing;
+    }
+  }
+
+  a {
+    font-weight: normal;
+    margin: @pagination-item-marign;
+    padding: @pagination-item-padding;
+  }
+
+  .accent-gradient & {
+    --filter-pointer-bg-color-hover: linear-gradient(var(--the7-accent-gradient));
+    --filter-pointer-bg-color-active: linear-gradient(var(--the7-accent-gradient));
+  }
+}

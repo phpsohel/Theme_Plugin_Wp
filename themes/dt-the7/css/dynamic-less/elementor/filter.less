@@ -1,0 +1,44 @@
+@show-filter-by-tablet: "";
+@show-filter-by-mobile: "";
+@show-filter-sorting-tablet: "";
+@show-filter-sorting-mobile: "";
+
+.hide-filter-extras-by-default() {
+  .filter-by,
+  .filter-sorting {
+    display: none;
+  }
+}
+
+.show-filter-by (@show) when (@show = y) {
+  .filter-by {
+    display: inline-flex;
+  }
+}
+
+.show-filter-sorting (@show) when (@show = y) {
+  .filter-sorting {
+    display: inline-flex;
+  }
+}
+
+@media screen and (max-width: @elementor-lg-breakpoint - 1) {
+  #main .@{unique-shortcode-class-name} .filter-extras {
+    display: block;
+
+    .hide-filter-extras-by-default();
+    .show-filter-by(@show-filter-by-tablet);
+    .show-filter-sorting(@show-filter-sorting-tablet);
+  }
+}
+
+@media screen and (max-width: @elementor-md-breakpoint - 1) {
+  #main .@{unique-shortcode-class-name} .filter-extras {
+    display: block;
+
+    .hide-filter-extras-by-default();
+    .show-filter-by(@show-filter-by-mobile);
+    .show-filter-sorting(@show-filter-sorting-mobile);
+  }
+}
+

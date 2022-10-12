@@ -1,0 +1,51 @@
+/* #Shortcode scroller
+================================================== */
+
+.owl-prev i,
+.owl-next i {
+	.slider-wrapper.arrows-accent & {
+		background-color: fade(@accent-bg-color, 90%);
+		.accent-gradient & {
+            .background-gradient(  @startColor: fade(@accent-bg-color,90% ), @endColor: @accent-bg-scroller-arrow );
+		}
+	}
+}
+.elementor-widget-the7_photo-scroller .arrows-bg-on .scroller-arrow:before,
+.elementor-widget-the7_photo-scroller .arrows-hover-bg-on .scroller-arrow:after {
+	.accent-bg-mixin;
+}
+.elementor-widget-the7_photo-scroller .dt-arrow-border-on .scroller-arrow:before,
+.elementor-widget-the7_photo-scroller .dt-arrow-hover-border-on .scroller-arrow:after {
+	border-color: @accent-bg-color;
+}
+.elementor-widget-the7_photo-scroller .scroller-arrow {
+	& span {
+		color: @accent-bg-color;
+		.accent-gradient & {
+			.text-gradient (@startColor: @accent-bg-color, @endColor: @accent-text-color-2);
+		}
+	}
+	&:hover span {
+		color: @accent-bg-color;
+		.accent-gradient & {
+			.text-gradient (@startColor: @accent-bg-color, @endColor: @accent-text-color-2);
+		}
+	}
+}
+.owl-prev:hover i,
+.owl-next:hover i {
+	.slider-wrapper.arrows-accent & {
+		.accent-bg-mixin;
+	}
+}
+//apply bg to :before for responsive height
+
+.dt-owl-item .post.bg-on {
+
+	.box-shadow (none);
+	&:before {
+		.solid-bg-mixin;
+		.outline-decoration;
+		.shadow-decoration;
+	}
+}

@@ -1,0 +1,30 @@
+
+.phantom-sticky .boxed .masthead:not(.side-header).sticky-on {
+	max-width: @box-width;
+}
+.boxed .top-bar-bg,
+.boxed .classic-header .navigation:before {
+	width: 100%;
+}
+.width-in-pixel .top-bar-bg,
+.width-in-pixel .top-bar.full-width-line:after,
+.width-in-pixel.classic-header.full-width-line .navigation:before,
+.width-in-pixel.classic-header.bg-behind-menu .navigation:before {
+	.boxed & {
+		width: @box-width;
+	}
+}
+.top-bar-bg {
+	#phantom.boxed.width-in-pixel & {
+		width: @box-width;
+	}
+}
+.boxed .masthead.full-width:not(.side-header):not(.masthead-mobile) {
+	width: @box-width;
+}
+/*Header height */
+.masthead:not(.side-header):not(.mixed-header) .header-bar,
+.header-space {
+	min-height: @header-height;
+}
+

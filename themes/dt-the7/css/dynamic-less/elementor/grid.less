@@ -1,0 +1,88 @@
+/* # grid
+================================================== */
+
+.dt-css-grid {
+  .@{unique-shortcode-class-name}:not(.resize-by-browser-width) & {
+    grid-row-gap: @grid-posts-gap*2;
+    grid-column-gap: @grid-posts-gap*2;
+    grid-template-columns: repeat(auto-fill, minmax(@grid-post-min-width, 1fr));
+
+    & .double-width {
+      grid-column: span 2;
+    }
+
+    .cssgridlegacy.no-cssgrid &,
+    .no-cssgridlegacy.no-cssgrid & {
+      display: flex;
+      flex-flow: row wrap;
+      margin: -@grid-posts-gap;
+
+      & .wf-cell {
+        flex: 1 0 @grid-post-min-width;
+        min-width: @grid-post-min-width;
+        max-width: 100%;
+        padding: @grid-posts-gap;
+        box-sizing: border-box;
+      }
+    }
+  }
+
+  .@{unique-shortcode-class-name}.resize-by-browser-width & {
+    grid-template-columns: repeat(@desktop-columns, 1fr);
+    grid-template-rows: auto;
+    grid-column-gap: @grid-posts-gap*2;
+    grid-row-gap: @grid-posts-gap*2;
+
+    & .double-width {
+      grid-column: span 2;
+    }
+
+    .cssgridlegacy.no-cssgrid & {
+      margin: -@grid-posts-gap;
+
+      & .wf-cell {
+        width: 100%/@desktop-columns;
+        padding: @grid-posts-gap;
+
+        &.double-width {
+          width: calc(100%/@desktop-columns) * 2;
+        }
+      }
+    }
+  }
+}
+
+.setup-grid-columns(@columns) {
+  .dt-css-grid {
+    .@{unique-shortcode-class-name}.resize-by-browser-width & {
+      grid-template-columns: repeat(@columns, 1fr);
+
+      .cssgridlegacy.no-cssgrid &,
+      .no-cssgridlegacy.no-cssgrid & {
+        & .wf-cell {
+          width: 100%/@columns;
+
+          &.double-width {
+            width: calc(100%/@columns)*2;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: @elementor-xl-breakpoint - 1) {
+  .setup-grid-columns(@desktop-columns);
+}
+
+@media screen and (max-width: @elementor-lg-breakpoint - 1) {
+  .setup-grid-columns(@tablet-columns);
+}
+
+@media screen and (max-width: @elementor-md-breakpoint - 1) {
+  .setup-grid-columns(@mobile-columns);
+}
+
+@media screen and (min-width: @elementor-container-width + 1) {
+  .setup-grid-columns(@wide-desktop-columns);
+}

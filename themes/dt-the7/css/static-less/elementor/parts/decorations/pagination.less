@@ -1,0 +1,45 @@
+.paginator.filter-decorations:not(.class-1):not(.class-2):not(.class-3):not(.class-4) {
+  .dots,
+  .nav-next i,
+  .nav-prev i {
+    color: var(--filter-title-color-normal);
+  }
+
+  a.button-load-more {
+    border: inherit;
+    transition: opacity 0.01s ease, color 0.05s ease;
+
+    & {
+      color: var(--filter-title-color-normal);
+
+      &:hover,
+      &:focus {
+        color: var(--filter-title-color-hover);
+      }
+    }
+
+    * {
+      color: inherit;
+      transition: inherit;
+    }
+
+    .button-caption:before {
+      content: "";
+      margin: 0;
+    }
+  }
+
+  &:not(.filter-pointer-framed) a.button-load-more.highlighted:not(:hover) {
+    &:before,
+    &:after {
+      background: var(--filter-pointer-bg-color-normal);
+    }
+  }
+
+  &.filter-pointer-framed a.button-load-more.highlighted:not(:hover) {
+    &:before,
+    &:after {
+      border-color: var(--filter-pointer-bg-color-normal);
+    }
+  }
+}

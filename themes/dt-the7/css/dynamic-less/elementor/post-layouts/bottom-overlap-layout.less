@@ -1,0 +1,13 @@
+//Post content
+.post-entry-content {
+	.@{unique-shortcode-class-name}.bottom-overlap-layout-list & {
+		margin-top: -@post-content-top-overlap;
+		width: @post-content-width;
+	}
+
+	// TODO: maube remove?
+	.@{unique-shortcode-class-name}.bottom-overlap-layout-listd .no-img & {
+		margin-top: 0;
+		width: 100%;
+	}
+}
